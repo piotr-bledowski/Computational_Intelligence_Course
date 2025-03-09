@@ -3,13 +3,13 @@ import tkinter as tk
 import random
 import time
 
-class TicTacDoh(TwoPlayerGame):
+class TicTacToe(TwoPlayerGame):
     def __init__(self, players=None):
         self.players = players
         self.board = [0 for _ in range(9)]  # Initialize empty board (0 = empty, 1 = X, 2 = O)
         self.current_player = 1  # Player 1 starts
         self.root = tk.Tk()
-        self.root.title("Tic Tac Doh")
+        self.root.title("Tic Tac Toe")
         self.buttons = []
         self.create_board()
         
@@ -54,32 +54,23 @@ class TicTacDoh(TwoPlayerGame):
             self.log_message(f"Player {self.current_player} ({'X' if self.current_player == 1 else 'O'}) tried invalid move at position {move}")
             return False
         
-        # Apply probability of failure
-        if random.random() < 0.2:
-            self.log_message(f"Player {self.current_player} ({'X' if self.current_player == 1 else 'O'})'s move at position {move} failed (20% chance)")
-            time.sleep(0.5)
+        if not self._execute_move(move):  # Template method pattern
             return True
-        
-        self.board[int(move) - 1] = self.current_player
-        symbol = "X" if self.current_player == 1 else "O"
-        self.log_message(f"Player {self.current_player} ({symbol}) successfully placed {symbol} at position {move}")
-        self.update_display()
         
         # Check for win condition immediately after move
         if self.lose():  # Now checks if current player won with this move
             winner = f"Player {self.current_player} ({'X' if self.current_player == 1 else 'O'})"
-            with open('game_result.txt', 'w') as f:
-                f.write(f"Game Over! {winner} wins!")
             self.root.quit()
             return "game_over"
         elif 0 not in self.board:  # Check for draw
-            with open('game_result.txt', 'w') as f:
-                f.write("Game Over! It's a draw!")
             self.root.quit()
             return "game_over"
         
-        time.sleep(0.5)
         return True
+
+    def _execute_move(self, move):
+        """Template method to be overridden by child classes"""
+        raise NotImplementedError
 
     def unmake_move(self, move):  # Required for AI's internal calculations
         # Create a copy of the board for AI calculations
@@ -131,3 +122,34 @@ class TicTacDoh(TwoPlayerGame):
     def switch_player(self):
         """Switch to next player (between 1 and 2)"""
         self.current_player = 3 - self.current_player  # Toggles between 1 and 2
+
+class TicTacToeDeterministic(TicTacToe):
+    def __init__(self, players=None):
+        super().__init__(players)
+        self.root.title("Tic Tac Toe - Deterministic")
+
+    def _execute_move(self, move):
+        self.board[int(move) - 1] = self.current_player
+        symbol = "X" if self.current_player == 1 else "O"
+        self.log_message(f"Player {self.current_player} ({symbol}) successfully placed {symbol} at position {move}")
+        self.update_display()
+        return True
+
+class TicTacToeNonDeterministic(TicTacToe):
+    def __init__(self, players=None):
+        super().__init__(players)
+        self.root.title("Tic Tac Toe - Non-Deterministic")
+
+    def _execute_move(self, move):
+        # Apply probability of failure
+        if random.random() < 0.2:
+            self.log_message(f"Player {self.current_player} ({'X' if self.current_player == 1 else 'O'})'s move at position {move} failed (20% chance)")
+            time.sleep(0.5)
+            return False
+        
+        self.board[int(move) - 1] = self.current_player
+        symbol = "X" if self.current_player == 1 else "O"
+        self.log_message(f"Player {self.current_player} ({symbol}) successfully placed {symbol} at position {move}")
+        self.update_display()
+        time.sleep(0.5)
+        return True
