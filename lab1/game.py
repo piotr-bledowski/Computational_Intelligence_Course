@@ -3,13 +3,13 @@ import tkinter as tk
 import random
 import time
 
-class TicTacToe(TwoPlayerGame):
+class TicTacDoh(TwoPlayerGame):
     def __init__(self, players=None):
         self.players = players
         self.board = [0 for _ in range(9)]  # Initialize empty board (0 = empty, 1 = X, 2 = O)
         self.current_player = 1  # Player 1 starts
         self.root = tk.Tk()
-        self.root.title("Tic Tac Toe")
+        self.root.title("Tic Tac Doh")
         self.buttons = []
         self.create_board()
         
@@ -20,6 +20,9 @@ class TicTacToe(TwoPlayerGame):
         self.winning_combo = None  # Store the winning combination
 
     def log_message(self, message):
+        # Print to terminal
+        print(message)
+        # Add to GUI log
         self.log_text.insert(tk.END, message + "\n")
         self.log_text.see(tk.END)
         self.root.update()
@@ -42,22 +45,41 @@ class TicTacToe(TwoPlayerGame):
         return [i + 1 for i, val in enumerate(self.board) if val == 0]
 
     def make_move(self, move):
+        # First check if game is already over
+        if self.is_over():
+            return "game_over"
+        
         # Check if move is valid
         if self.board[int(move) - 1] != 0:
-            self.log_message(f"Player {self.current_player} tried invalid move at position {move}")
-            return False  # Return False to indicate move wasn't made
-            
+            self.log_message(f"Player {self.current_player} ({'X' if self.current_player == 1 else 'O'}) tried invalid move at position {move}")
+            return False
+        
         # Apply probability of failure
         if random.random() < 0.2:
-            self.log_message(f"Player {self.current_player}'s move at position {move} failed (20% chance)")
-            return True  # Return True to indicate turn should end
-            
+            self.log_message(f"Player {self.current_player} ({'X' if self.current_player == 1 else 'O'})'s move at position {move} failed (20% chance)")
+            time.sleep(0.5)
+            return True
+        
         self.board[int(move) - 1] = self.current_player
         symbol = "X" if self.current_player == 1 else "O"
-        self.log_message(f"Player {self.current_player} successfully placed {symbol} at position {move}")
+        self.log_message(f"Player {self.current_player} ({symbol}) successfully placed {symbol} at position {move}")
         self.update_display()
-        time.sleep(2)
-        return True  # Return True to indicate turn should end
+        
+        # Check for win condition immediately after move
+        if self.lose():  # Now checks if current player won with this move
+            winner = f"Player {self.current_player} ({'X' if self.current_player == 1 else 'O'})"
+            with open('game_result.txt', 'w') as f:
+                f.write(f"Game Over! {winner} wins!")
+            self.root.quit()
+            return "game_over"
+        elif 0 not in self.board:  # Check for draw
+            with open('game_result.txt', 'w') as f:
+                f.write("Game Over! It's a draw!")
+            self.root.quit()
+            return "game_over"
+        
+        time.sleep(0.5)
+        return True
 
     def unmake_move(self, move):  # Required for AI's internal calculations
         # Create a copy of the board for AI calculations
@@ -72,15 +94,18 @@ class TicTacToe(TwoPlayerGame):
                        (0,3,6), (1,4,7), (2,5,8),  # Vertical
                        (0,4,8), (2,4,6)]           # Diagonal
         
+        # Check for current player's win (not opponent's)
         for combo in combinations:
-            if all(self.board[i] == self.opponent_index for i in combo):
+            if all(self.board[i] == self.current_player for i in combo):
                 self.winning_combo = combo
                 return True
         return False
 
     def is_over(self):
-        return (self.lose() or  # Game is lost
-                (0 not in self.board))  # Board is full (draw)
+        game_over = (self.lose() or (0 not in self.board))
+        if game_over:
+            self.update_display()  # Make sure final state is shown
+        return game_over
 
     def show(self):
         # GUI handles the display, so we can skip console output
@@ -91,10 +116,18 @@ class TicTacToe(TwoPlayerGame):
 
     def announce_winner(self):
         if self.winning_combo:
-            winner = "Player 1 (X)" if self.opponent_index == 1 else "Player 2 (O)"
+            winner = f"Player {self.current_player} ({'X' if self.current_player == 1 else 'O'})"
             self.log_message(f"Game Over! {winner} wins!")
             # Highlight winning combination
             for pos in self.winning_combo:
                 self.buttons[pos].config(bg='light green')
-        elif self.is_over():  # Board is full but no winner
-            self.log_message("Game Over! It's a draw!")
+
+    def play_move(self, move):
+        result = self.make_move(move)
+        if result != "game_over":
+            self.switch_player()
+        return result
+
+    def switch_player(self):
+        """Switch to next player (between 1 and 2)"""
+        self.current_player = 3 - self.current_player  # Toggles between 1 and 2
