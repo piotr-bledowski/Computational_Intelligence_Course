@@ -4,10 +4,10 @@ import random
 import time
 
 class TicTacToe(TwoPlayerGame):
-    def __init__(self, players=None):
+    def __init__(self, starting_player, players=None):
         self.players = players
         self.board = [0 for _ in range(9)]  # Initialize empty board (0 = empty, 1 = X, 2 = O)
-        self.current_player = 1  # Player 1 starts
+        self.current_player = starting_player  # Player 1 starts
         self.root = tk.Tk()
         self.root.title("Tic Tac Toe")
         self.buttons = []
@@ -18,6 +18,9 @@ class TicTacToe(TwoPlayerGame):
         self.log_text.grid(row=3, column=0, columnspan=3)
 
         self.winning_combo = None  # Store the winning combination
+
+    def possible_moves(self):
+        return [i + 1 for i, val in enumerate(self.board) if val == 0]
 
     def log_message(self, message):
         # Print to terminal
@@ -46,7 +49,9 @@ class TicTacToe(TwoPlayerGame):
 
     def make_move(self, move):
         # First check if game is already over
+        print("BBBBB")
         if self.is_over():
+            print("CCCCC")
             return "game_over"
         
         # Check if move is valid
@@ -103,7 +108,7 @@ class TicTacToe(TwoPlayerGame):
         pass
 
     def scoring(self):
-        return -100 if self.lose() else 0
+        return -1 if self.lose() else 1
 
     def announce_winner(self):
         if self.winning_combo:
@@ -115,6 +120,7 @@ class TicTacToe(TwoPlayerGame):
 
     def play_move(self, move):
         result = self.make_move(move)
+        print("AAAAA")
         if result != "game_over":
             self.switch_player()
         return result
@@ -124,8 +130,8 @@ class TicTacToe(TwoPlayerGame):
         self.current_player = 3 - self.current_player  # Toggles between 1 and 2
 
 class TicTacToeDeterministic(TicTacToe):
-    def __init__(self, players=None):
-        super().__init__(players)
+    def __init__(self, starting_player, players=None):
+        super().__init__(starting_player, players)
         self.root.title("Tic Tac Toe - Deterministic")
 
     def _execute_move(self, move):
@@ -133,11 +139,12 @@ class TicTacToeDeterministic(TicTacToe):
         symbol = "X" if self.current_player == 1 else "O"
         self.log_message(f"Player {self.current_player} ({symbol}) successfully placed {symbol} at position {move}")
         self.update_display()
+        time.sleep(0.5)
         return True
 
 class TicTacToeNonDeterministic(TicTacToe):
-    def __init__(self, players=None):
-        super().__init__(players)
+    def __init__(self, starting_player, players=None):
+        super().__init__(starting_player, players)
         self.root.title("Tic Tac Toe - Non-Deterministic")
 
     def _execute_move(self, move):

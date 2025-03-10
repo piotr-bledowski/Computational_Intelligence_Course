@@ -2,16 +2,16 @@ from easyAI import AI_Player, Negamax
 from game import TicTacToeDeterministic, TicTacToeNonDeterministic
 import time
 
-def run_game(game_class):
+def run_game(game_class, starting_player):
     # Initialize AI algorithm
-    algorithm = Negamax(10)
+    algorithm = Negamax(5)
 
     # Initialize players
     player1 = AI_Player(algorithm)
     player2 = AI_Player(algorithm)
 
     # Initialize and start the game
-    game = game_class([player1, player2])
+    game = game_class(starting_player, [player1, player2])
     
     def game_loop():
         if not game.is_over():
@@ -40,13 +40,15 @@ def run_experiment():
     }
     
     # Run 10 games for each variant
-    for i in range(10):
+    for i in range(2):
+        starting_player = 1 if i % 2 == 0 else 2
+
         print(f"\nRunning Deterministic Game {i+1}/10")
-        results["Deterministic"].append(run_game(TicTacToeDeterministic))
+        results["Deterministic"].append(run_game(TicTacToeDeterministic, starting_player))
         time.sleep(1)  # Brief pause between games
         
         print(f"\nRunning Non-Deterministic Game {i+1}/10")
-        results["Non-Deterministic"].append(run_game(TicTacToeNonDeterministic))
+        results["Non-Deterministic"].append(run_game(TicTacToeNonDeterministic, starting_player))
         time.sleep(1)
     
     # Save results to file
