@@ -1,0 +1,39 @@
+Experiment Results
+=================
+
+Regular Games:
+--------------
+Game 1: Draw
+Game 2: Draw
+Game 3: Draw
+Game 4: Draw
+Game 5: Draw
+Game 6: Draw
+Game 7: Draw
+Game 8: Draw
+Game 9: Draw
+Game 10: Draw
+
+Statistics:
+Player 1 Wins: 0 (0.0%)
+Player 2 Wins: 0 (0.0%)
+Draws: 10 (100.0%)
+
+Non-Deterministic Games:
+------------------------
+Game 1: Player 1 (X)
+Game 2: Player 2 (O)
+Game 3: Player 2 (O)
+Game 4: Draw
+Game 5: Player 1 (X)
+Game 6: Player 1 (X)
+Game 7: Player 1 (X)
+Game 8: Player 1 (X)
+Game 9: Player 2 (O)
+Game 10: Player 2 (O)
+
+Statistics:
+Player 1 Wins: 5 (50.0%)
+Player 2 Wins: 4 (40.0%)
+Draws: 1 (10.0%)
+

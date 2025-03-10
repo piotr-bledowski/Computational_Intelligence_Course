@@ -1,54 +1,44 @@
 from easyAI import AI_Player, Negamax
-from game import TicTacToeDeterministic, TicTacToeNonDeterministic
+from easyAI.games import TicTacToe
+from tictacdoh import TicTacDoh
 import time
 
 def run_game(game_class, starting_player):
     # Initialize AI algorithm
-    algorithm = Negamax(5)
+    algorithm = Negamax(15)
 
     # Initialize players
     player1 = AI_Player(algorithm)
     player2 = AI_Player(algorithm)
 
     # Initialize and start the game
-    game = game_class(starting_player, [player1, player2])
+    game = game_class([player1, player2])
     
-    def game_loop():
-        if not game.is_over():
-            move = game.player.ask_move(game)
-            result = game.play_move(move)
-            if result == "game_over":
-                game.root.after(100, game.root.destroy)
-            else:
-                game.root.after(100, game_loop)
-    
-    # Start the game loop
-    game.root.after(1000, game_loop)
-    game.root.mainloop()
+    while not game.is_over():
+        move = game.player.ask_move(game)
+        game.play_move(move)
 
     # Return game result
-    if game.lose():
-        winner = f"Player {game.current_player} ({'X' if game.current_player == 1 else 'O'})"
+    if game.lose():  # Using lose() from TwoPlayerGame
+        winner = f"Player {game.opponent_index} ({'X' if game.opponent_index == 1 else 'O'})"
         return winner
     else:
         return "Draw"
 
 def run_experiment():
     results = {
-        "Deterministic": [],
+        "Regular": [],
         "Non-Deterministic": []
     }
     
     # Run 10 games for each variant
-    for i in range(2):
-        starting_player = 1 if i % 2 == 0 else 2
-
-        print(f"\nRunning Deterministic Game {i+1}/10")
-        results["Deterministic"].append(run_game(TicTacToeDeterministic, starting_player))
+    for i in range(10):
+        print(f"\nRunning Regular Game {i+1}/10")
+        results["Regular"].append(run_game(TicTacToe, 1))  # Regular always starts with player 1
         time.sleep(1)  # Brief pause between games
         
         print(f"\nRunning Non-Deterministic Game {i+1}/10")
-        results["Non-Deterministic"].append(run_game(TicTacToeNonDeterministic, starting_player))
+        results["Non-Deterministic"].append(run_game(TicTacDoh, 1))  # Non-deterministic starts with player 1
         time.sleep(1)
     
     # Save results to file
