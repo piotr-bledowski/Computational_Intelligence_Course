@@ -2,66 +2,110 @@ from easyAI import AI_Player, Negamax
 from easyAI.games import TicTacToe
 from tictacdoh import TicTacDoh
 import time
+import itertools
 
-def run_game(game_class, starting_player):
-    # Initialize AI algorithm
-    algorithm = Negamax(15)
+def run_game(game_class, player1_depth, player2_depth, starting_player=1):
+    # Initialize AI algorithms with different depths
+    algorithm1 = Negamax(player1_depth)
+    algorithm2 = Negamax(player2_depth)
 
     # Initialize players
-    player1 = AI_Player(algorithm)
-    player2 = AI_Player(algorithm)
+    player1 = AI_Player(algorithm1)
+    player2 = AI_Player(algorithm2)
+    
+    # Set players in the order determined by starting_player
+    players = [player1, player2] if starting_player == 1 else [player2, player1]
 
+    # Initialize timing stats
+    move_times = {1: [], 2: []}
+    
     # Initialize and start the game
-    game = game_class([player1, player2])
+    game = game_class(players)
     
     while not game.is_over():
+        start_time = time.time()
         move = game.player.ask_move(game)
+        end_time = time.time()
+        
+        # Record move time for current player
+        # Map the current game player back to our original player numbers
+        current_player = 1 if game.player == player1 else 2
+        move_times[current_player].append(end_time - start_time)
+        
         game.play_move(move)
 
-    # Return game result
-    if game.lose():  # Using lose() from TwoPlayerGame
-        winner = f"Player {game.opponent_index} ({'X' if game.opponent_index == 1 else 'O'})"
-        return winner
+    # Calculate average move times
+    avg_times = {
+        1: sum(move_times[1]) / len(move_times[1]) if move_times[1] else 0,
+        2: sum(move_times[2]) / len(move_times[2]) if move_times[2] else 0
+    }
+
+    # Determine winner based on original player assignments
+    if game.lose():
+        winner = 1 if game.player == player2 else 2
     else:
-        return "Draw"
+        winner = 0  # Draw
+    
+    return {
+        'winner': winner,
+        'avg_times': avg_times,
+        'total_moves': len(move_times[1]) + len(move_times[2])
+    }
 
 def run_experiment():
-    results = {
-        "Regular": [],
-        "Non-Deterministic": []
-    }
+    depths = [2, 4, 6]  # Testing different depths for Negamax
+    game_variants = [TicTacToe, TicTacDoh]
+    results = {}
     
-    # Run 10 games for each variant
-    for i in range(10):
-        print(f"\nRunning Regular Game {i+1}/10")
-        results["Regular"].append(run_game(TicTacToe, 1))  # Regular always starts with player 1
-        time.sleep(1)  # Brief pause between games
+    # Test all combinations of depths for both players
+    for game_class in game_variants:
+        game_type = "Regular" if game_class == TicTacToe else "Non-Deterministic"
+        results[game_type] = {}
         
-        print(f"\nRunning Non-Deterministic Game {i+1}/10")
-        results["Non-Deterministic"].append(run_game(TicTacDoh, 1))  # Non-deterministic starts with player 1
-        time.sleep(1)
-    
+        for d1, d2 in itertools.product(depths, repeat=2):
+            key = f"P1(d={d1})-P2(d={d2})"
+            results[game_type][key] = []
+            
+            # Run 100 games with each player starting
+            for starting_player in [1, 2]:
+                for i in range(100):
+                    starter = "P1" if starting_player == 1 else "P2"
+                    print(f"\nRunning {game_type} Game {i+1}/100 with {key}, {starter} starts")
+                    result = run_game(game_class, d1, d2, starting_player)
+                    results[game_type][key].append(result)
+
     # Save results to file
     with open('experiment_results.txt', 'w') as f:
         f.write("Experiment Results\n")
         f.write("=================\n\n")
         
-        for variant, outcomes in results.items():
+        for variant, configs in results.items():
             f.write(f"{variant} Games:\n")
-            f.write("-" * (len(variant) + 7) + "\n")
-            for i, result in enumerate(outcomes, 1):
-                f.write(f"Game {i}: {result}\n")
+            f.write("-" * (len(variant) + 7) + "\n\n")
             
-            # Calculate statistics
-            total_games = len(outcomes)
-            player1_wins = sum(1 for x in outcomes if "Player 1" in x)
-            player2_wins = sum(1 for x in outcomes if "Player 2" in x)
-            draws = sum(1 for x in outcomes if x == "Draw")
-            
-            f.write(f"\nStatistics:\n")
-            f.write(f"Player 1 Wins: {player1_wins} ({player1_wins/total_games*100:.1f}%)\n")
-            f.write(f"Player 2 Wins: {player2_wins} ({player2_wins/total_games*100:.1f}%)\n")
-            f.write(f"Draws: {draws} ({draws/total_games*100:.1f}%)\n\n")
+            for config, outcomes in configs.items():
+                f.write(f"Configuration: {config}\n")
+                f.write("-" * (len(config) + 14) + "\n")
+                
+                # Calculate combined statistics for all 20 games
+                total_games = len(outcomes)
+                p1_wins = sum(1 for x in outcomes if x['winner'] == 1)
+                p2_wins = sum(1 for x in outcomes if x['winner'] == 2)
+                draws = sum(1 for x in outcomes if x['winner'] == 0)
+                
+                # Calculate average move times across all games
+                p1_avg_time = sum(x['avg_times'][1] for x in outcomes) / total_games
+                p2_avg_time = sum(x['avg_times'][2] for x in outcomes) / total_games
+                avg_moves = sum(x['total_moves'] for x in outcomes) / total_games
+                
+                f.write(f"Total Games: {total_games}\n")
+                f.write(f"Player 1 Wins: {p1_wins} ({p1_wins/total_games*100:.1f}%)\n")
+                f.write(f"Player 2 Wins: {p2_wins} ({p2_wins/total_games*100:.1f}%)\n")
+                f.write(f"Draws: {draws} ({draws/total_games*100:.1f}%)\n")
+                f.write(f"Average Moves per Game: {avg_moves:.1f}\n")
+                f.write(f"Average Move Time - Player 1: {p1_avg_time*1000:.1f}ms\n")
+                f.write(f"Average Move Time - Player 2: {p2_avg_time*1000:.1f}ms\n")
+                f.write("\n" + "="*50 + "\n\n")
 
 if __name__ == "__main__":
     run_experiment()
