@@ -1,13 +1,26 @@
 from easyAI import AI_Player, Negamax
+#from easyAI.AI import TT
 from easyAI.games import TicTacToe
 from tictacdoh import TicTacDoh
 import time
 import itertools
 
-def run_game(game_class, player1_depth, player2_depth, starting_player=1):
-    # Initialize AI algorithms with different depths
-    algorithm1 = Negamax(player1_depth)
-    algorithm2 = Negamax(player2_depth)
+def create_ai_algorithm(depth, use_pruning=True):
+    """Create an AI algorithm with or without alpha-beta pruning"""
+    if use_pruning:
+        return Negamax(depth)  # Default Negamax uses alpha-beta pruning
+    else:
+        # Create Negamax without pruning by setting win_score very high
+        return Negamax(depth, win_score=float('inf'))
+
+def run_game(game_class, player1_config, player2_config, starting_player=1):
+    # Unpack configurations
+    p1_depth, p1_pruning = player1_config
+    p2_depth, p2_pruning = player2_config
+
+    # Initialize AI algorithms with different configurations
+    algorithm1 = create_ai_algorithm(p1_depth, p1_pruning)
+    algorithm2 = create_ai_algorithm(p2_depth, p2_pruning)
 
     # Initialize players
     player1 = AI_Player(algorithm1)
@@ -27,20 +40,16 @@ def run_game(game_class, player1_depth, player2_depth, starting_player=1):
         move = game.player.ask_move(game)
         end_time = time.time()
         
-        # Record move time for current player
-        # Map the current game player back to our original player numbers
         current_player = 1 if game.player == player1 else 2
         move_times[current_player].append(end_time - start_time)
         
         game.play_move(move)
 
-    # Calculate average move times
     avg_times = {
         1: sum(move_times[1]) / len(move_times[1]) if move_times[1] else 0,
         2: sum(move_times[2]) / len(move_times[2]) if move_times[2] else 0
     }
 
-    # Determine winner based on original player assignments
     if game.lose():
         winner = 1 if game.player == player2 else 2
     else:
@@ -54,16 +63,21 @@ def run_game(game_class, player1_depth, player2_depth, starting_player=1):
 
 def run_experiment():
     depths = [2, 4, 6]  # Testing different depths for Negamax
+    pruning_options = [True, False]  # With and without alpha-beta pruning
     game_variants = [TicTacToe, TicTacDoh]
     results = {}
     
-    # Test all combinations of depths for both players
     for game_class in game_variants:
         game_type = "Regular" if game_class == TicTacToe else "Non-Deterministic"
         results[game_type] = {}
         
-        for d1, d2 in itertools.product(depths, repeat=2):
-            key = f"P1(d={d1})-P2(d={d2})"
+        # Test all combinations of depths and pruning options
+        configs = list(itertools.product(depths, pruning_options))
+        for p1_config, p2_config in itertools.product(configs, repeat=2):
+            p1_depth, p1_pruning = p1_config
+            p2_depth, p2_pruning = p2_config
+            
+            key = f"P1(d={p1_depth},{'ab' if p1_pruning else 'std'})-P2(d={p2_depth},{'ab' if p2_pruning else 'std'})"
             results[game_type][key] = []
             
             # Run 100 games with each player starting
@@ -71,7 +85,7 @@ def run_experiment():
                 for i in range(100):
                     starter = "P1" if starting_player == 1 else "P2"
                     print(f"\nRunning {game_type} Game {i+1}/100 with {key}, {starter} starts")
-                    result = run_game(game_class, d1, d2, starting_player)
+                    result = run_game(game_class, p1_config, p2_config, starting_player)
                     results[game_type][key].append(result)
 
     # Save results to file
@@ -87,13 +101,11 @@ def run_experiment():
                 f.write(f"Configuration: {config}\n")
                 f.write("-" * (len(config) + 14) + "\n")
                 
-                # Calculate combined statistics for all 20 games
                 total_games = len(outcomes)
                 p1_wins = sum(1 for x in outcomes if x['winner'] == 1)
                 p2_wins = sum(1 for x in outcomes if x['winner'] == 2)
                 draws = sum(1 for x in outcomes if x['winner'] == 0)
                 
-                # Calculate average move times across all games
                 p1_avg_time = sum(x['avg_times'][1] for x in outcomes) / total_games
                 p2_avg_time = sum(x['avg_times'][2] for x in outcomes) / total_games
                 avg_moves = sum(x['total_moves'] for x in outcomes) / total_games

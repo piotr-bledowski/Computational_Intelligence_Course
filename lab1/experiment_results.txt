@@ -1,47 +1,227 @@
 Experiment Results
 =================
-    
+
 Regular Games:
 --------------
 
-Configuration: P1(d=2)-P2(d=2)
------------------------------
+Configuration: P1(d=2,ab)-P2(d=2,ab)
+-----------------------------------
+Total Games: 200
+Player 1 Wins: 100 (50.0%)
+Player 2 Wins: 100 (50.0%)
+Draws: 0 (0.0%)
+Average Moves per Game: 7.0
+Average Move Time - Player 1: 0.2ms
+Average Move Time - Player 2: 0.1ms
+
+==================================================
+
+Configuration: P1(d=2,ab)-P2(d=2,std)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 100 (50.0%)
+Player 2 Wins: 100 (50.0%)
+Draws: 0 (0.0%)
+Average Moves per Game: 7.0
+Average Move Time - Player 1: 0.2ms
+Average Move Time - Player 2: 0.2ms
+
+==================================================
+
+Configuration: P1(d=2,ab)-P2(d=4,ab)
+-----------------------------------
+Total Games: 200
+Player 1 Wins: 0 (0.0%)
+Player 2 Wins: 100 (50.0%)
+Draws: 100 (50.0%)
+Average Moves per Game: 8.0
+Average Move Time - Player 1: 0.2ms
+Average Move Time - Player 2: 0.9ms
+
+==================================================
+
+Configuration: P1(d=2,ab)-P2(d=4,std)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 0 (0.0%)
+Player 2 Wins: 100 (50.0%)
+Draws: 100 (50.0%)
+Average Moves per Game: 8.0
+Average Move Time - Player 1: 0.1ms
+Average Move Time - Player 2: 0.9ms
+
+==================================================
+
+Configuration: P1(d=2,ab)-P2(d=6,ab)
+-----------------------------------
+Total Games: 200
+Player 1 Wins: 0 (0.0%)
+Player 2 Wins: 100 (50.0%)
+Draws: 100 (50.0%)
+Average Moves per Game: 8.0
+Average Move Time - Player 1: 0.2ms
+Average Move Time - Player 2: 4.7ms
+
+==================================================
+
+Configuration: P1(d=2,ab)-P2(d=6,std)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 0 (0.0%)
+Player 2 Wins: 100 (50.0%)
+Draws: 100 (50.0%)
+Average Moves per Game: 8.0
+Average Move Time - Player 1: 0.1ms
+Average Move Time - Player 2: 4.5ms
+
+==================================================
+
+Configuration: P1(d=2,std)-P2(d=2,ab)
+------------------------------------
 Total Games: 200
 Player 1 Wins: 100 (50.0%)
 Player 2 Wins: 100 (50.0%)
 Draws: 0 (0.0%)
 Average Moves per Game: 7.0
 Average Move Time - Player 1: 0.1ms
+Average Move Time - Player 2: 0.2ms
+
+==================================================
+
+Configuration: P1(d=2,std)-P2(d=2,std)
+-------------------------------------
+Total Games: 200
+Player 1 Wins: 100 (50.0%)
+Player 2 Wins: 100 (50.0%)
+Draws: 0 (0.0%)
+Average Moves per Game: 7.0
+Average Move Time - Player 1: 0.2ms
 Average Move Time - Player 2: 0.1ms
 
 ==================================================
 
-Configuration: P1(d=2)-P2(d=4)
------------------------------
+Configuration: P1(d=2,std)-P2(d=4,ab)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 0 (0.0%)
+Player 2 Wins: 100 (50.0%)
+Draws: 100 (50.0%)
+Average Moves per Game: 8.0
+Average Move Time - Player 1: 0.2ms
+Average Move Time - Player 2: 0.9ms
+
+==================================================
+
+Configuration: P1(d=2,std)-P2(d=4,std)
+-------------------------------------
 Total Games: 200
 Player 1 Wins: 0 (0.0%)
 Player 2 Wins: 100 (50.0%)
 Draws: 100 (50.0%)
 Average Moves per Game: 8.0
 Average Move Time - Player 1: 0.1ms
-Average Move Time - Player 2: 0.9ms
+Average Move Time - Player 2: 1.0ms
 
 ==================================================
 
-Configuration: P1(d=2)-P2(d=6)
------------------------------
+Configuration: P1(d=2,std)-P2(d=6,ab)
+------------------------------------
 Total Games: 200
 Player 1 Wins: 0 (0.0%)
 Player 2 Wins: 100 (50.0%)
 Draws: 100 (50.0%)
 Average Moves per Game: 8.0
 Average Move Time - Player 1: 0.2ms
-Average Move Time - Player 2: 4.6ms
+Average Move Time - Player 2: 4.4ms
 
 ==================================================
 
-Configuration: P1(d=4)-P2(d=2)
------------------------------
+Configuration: P1(d=2,std)-P2(d=6,std)
+-------------------------------------
+Total Games: 200
+Player 1 Wins: 0 (0.0%)
+Player 2 Wins: 100 (50.0%)
+Draws: 100 (50.0%)
+Average Moves per Game: 8.0
+Average Move Time - Player 1: 0.2ms
+Average Move Time - Player 2: 4.5ms
+
+==================================================
+
+Configuration: P1(d=4,ab)-P2(d=2,ab)
+-----------------------------------
+Total Games: 200
+Player 1 Wins: 100 (50.0%)
+Player 2 Wins: 0 (0.0%)
+Draws: 100 (50.0%)
+Average Moves per Game: 8.0
+Average Move Time - Player 1: 1.0ms
+Average Move Time - Player 2: 0.1ms
+
+==================================================
+
+Configuration: P1(d=4,ab)-P2(d=2,std)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 100 (50.0%)
+Player 2 Wins: 0 (0.0%)
+Draws: 100 (50.0%)
+Average Moves per Game: 8.0
+Average Move Time - Player 1: 1.0ms
+Average Move Time - Player 2: 0.1ms
+
+==================================================
+
+Configuration: P1(d=4,ab)-P2(d=4,ab)
+-----------------------------------
+Total Games: 200
+Player 1 Wins: 0 (0.0%)
+Player 2 Wins: 0 (0.0%)
+Draws: 200 (100.0%)
+Average Moves per Game: 9.0
+Average Move Time - Player 1: 0.9ms
+Average Move Time - Player 2: 0.8ms
+
+==================================================
+
+Configuration: P1(d=4,ab)-P2(d=4,std)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 0 (0.0%)
+Player 2 Wins: 0 (0.0%)
+Draws: 200 (100.0%)
+Average Moves per Game: 9.0
+Average Move Time - Player 1: 0.6ms
+Average Move Time - Player 2: 0.8ms
+
+==================================================
+
+Configuration: P1(d=4,ab)-P2(d=6,ab)
+-----------------------------------
+Total Games: 200
+Player 1 Wins: 0 (0.0%)
+Player 2 Wins: 100 (50.0%)
+Draws: 100 (50.0%)
+Average Moves per Game: 8.0
+Average Move Time - Player 1: 0.7ms
+Average Move Time - Player 2: 4.7ms
+
+==================================================
+
+Configuration: P1(d=4,ab)-P2(d=6,std)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 0 (0.0%)
+Player 2 Wins: 100 (50.0%)
+Draws: 100 (50.0%)
+Average Moves per Game: 8.0
+Average Move Time - Player 1: 1.0ms
+Average Move Time - Player 2: 4.4ms
+
+==================================================
+
+Configuration: P1(d=4,std)-P2(d=2,ab)
+------------------------------------
 Total Games: 200
 Player 1 Wins: 100 (50.0%)
 Player 2 Wins: 0 (0.0%)
@@ -52,174 +232,642 @@ Average Move Time - Player 2: 0.1ms
 
 ==================================================
 
-Configuration: P1(d=4)-P2(d=4)
------------------------------
+Configuration: P1(d=4,std)-P2(d=2,std)
+-------------------------------------
+Total Games: 200
+Player 1 Wins: 100 (50.0%)
+Player 2 Wins: 0 (0.0%)
+Draws: 100 (50.0%)
+Average Moves per Game: 8.0
+Average Move Time - Player 1: 0.9ms
+Average Move Time - Player 2: 0.1ms
+
+==================================================
+
+Configuration: P1(d=4,std)-P2(d=4,ab)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 0 (0.0%)
+Player 2 Wins: 0 (0.0%)
+Draws: 200 (100.0%)
+Average Moves per Game: 9.0
+Average Move Time - Player 1: 0.7ms
+Average Move Time - Player 2: 0.7ms
+
+==================================================
+
+Configuration: P1(d=4,std)-P2(d=4,std)
+-------------------------------------
 Total Games: 200
 Player 1 Wins: 0 (0.0%)
 Player 2 Wins: 0 (0.0%)
 Draws: 200 (100.0%)
 Average Moves per Game: 9.0
 Average Move Time - Player 1: 0.8ms
-Average Move Time - Player 2: 0.8ms
+Average Move Time - Player 2: 0.7ms
 
 ==================================================
 
-Configuration: P1(d=4)-P2(d=6)
------------------------------
+Configuration: P1(d=4,std)-P2(d=6,ab)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 0 (0.0%)
+Player 2 Wins: 100 (50.0%)
+Draws: 100 (50.0%)
+Average Moves per Game: 8.0
+Average Move Time - Player 1: 0.8ms
+Average Move Time - Player 2: 4.5ms
+
+==================================================
+
+Configuration: P1(d=4,std)-P2(d=6,std)
+-------------------------------------
 Total Games: 200
 Player 1 Wins: 0 (0.0%)
 Player 2 Wins: 100 (50.0%)
 Draws: 100 (50.0%)
 Average Moves per Game: 8.0
 Average Move Time - Player 1: 0.9ms
-Average Move Time - Player 2: 4.5ms
+Average Move Time - Player 2: 4.4ms
 
 ==================================================
 
-Configuration: P1(d=6)-P2(d=2)
------------------------------
+Configuration: P1(d=6,ab)-P2(d=2,ab)
+-----------------------------------
 Total Games: 200
 Player 1 Wins: 100 (50.0%)
 Player 2 Wins: 0 (0.0%)
 Draws: 100 (50.0%)
 Average Moves per Game: 8.0
-Average Move Time - Player 1: 4.5ms
+Average Move Time - Player 1: 4.6ms
 Average Move Time - Player 2: 0.1ms
 
 ==================================================
 
-Configuration: P1(d=6)-P2(d=4)
------------------------------
+Configuration: P1(d=6,ab)-P2(d=2,std)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 100 (50.0%)
+Player 2 Wins: 0 (0.0%)
+Draws: 100 (50.0%)
+Average Moves per Game: 8.0
+Average Move Time - Player 1: 4.4ms
+Average Move Time - Player 2: 0.1ms
+
+==================================================
+
+Configuration: P1(d=6,ab)-P2(d=4,ab)
+-----------------------------------
+Total Games: 200
+Player 1 Wins: 100 (50.0%)
+Player 2 Wins: 0 (0.0%)
+Draws: 100 (50.0%)
+Average Moves per Game: 8.0
+Average Move Time - Player 1: 4.3ms
+Average Move Time - Player 2: 0.9ms
+
+==================================================
+
+Configuration: P1(d=6,ab)-P2(d=4,std)
+------------------------------------
 Total Games: 200
 Player 1 Wins: 100 (50.0%)
 Player 2 Wins: 0 (0.0%)
 Draws: 100 (50.0%)
 Average Moves per Game: 8.0
 Average Move Time - Player 1: 4.5ms
-Average Move Time - Player 2: 0.9ms
+Average Move Time - Player 2: 0.8ms
 
 ==================================================
 
-Configuration: P1(d=6)-P2(d=6)
------------------------------
+Configuration: P1(d=6,ab)-P2(d=6,ab)
+-----------------------------------
+Total Games: 200
+Player 1 Wins: 0 (0.0%)
+Player 2 Wins: 0 (0.0%)
+Draws: 200 (100.0%)
+Average Moves per Game: 9.0
+Average Move Time - Player 1: 3.9ms
+Average Move Time - Player 2: 3.4ms
+
+==================================================
+
+Configuration: P1(d=6,ab)-P2(d=6,std)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 0 (0.0%)
+Player 2 Wins: 0 (0.0%)
+Draws: 200 (100.0%)
+Average Moves per Game: 9.0
+Average Move Time - Player 1: 3.8ms
+Average Move Time - Player 2: 3.5ms
+
+==================================================
+
+Configuration: P1(d=6,std)-P2(d=2,ab)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 100 (50.0%)
+Player 2 Wins: 0 (0.0%)
+Draws: 100 (50.0%)
+Average Moves per Game: 8.0
+Average Move Time - Player 1: 4.3ms
+Average Move Time - Player 2: 0.1ms
+
+==================================================
+
+Configuration: P1(d=6,std)-P2(d=2,std)
+-------------------------------------
+Total Games: 200
+Player 1 Wins: 100 (50.0%)
+Player 2 Wins: 0 (0.0%)
+Draws: 100 (50.0%)
+Average Moves per Game: 8.0
+Average Move Time - Player 1: 4.4ms
+Average Move Time - Player 2: 0.2ms
+
+==================================================
+
+Configuration: P1(d=6,std)-P2(d=4,ab)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 100 (50.0%)
+Player 2 Wins: 0 (0.0%)
+Draws: 100 (50.0%)
+Average Moves per Game: 8.0
+Average Move Time - Player 1: 4.2ms
+Average Move Time - Player 2: 1.1ms
+
+==================================================
+
+Configuration: P1(d=6,std)-P2(d=4,std)
+-------------------------------------
+Total Games: 200
+Player 1 Wins: 100 (50.0%)
+Player 2 Wins: 0 (0.0%)
+Draws: 100 (50.0%)
+Average Moves per Game: 8.0
+Average Move Time - Player 1: 4.2ms
+Average Move Time - Player 2: 1.1ms
+
+==================================================
+
+Configuration: P1(d=6,std)-P2(d=6,ab)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 0 (0.0%)
+Player 2 Wins: 0 (0.0%)
+Draws: 200 (100.0%)
+Average Moves per Game: 9.0
+Average Move Time - Player 1: 3.4ms
+Average Move Time - Player 2: 3.9ms
+
+==================================================
+
+Configuration: P1(d=6,std)-P2(d=6,std)
+-------------------------------------
 Total Games: 200
 Player 1 Wins: 0 (0.0%)
 Player 2 Wins: 0 (0.0%)
 Draws: 200 (100.0%)
 Average Moves per Game: 9.0
 Average Move Time - Player 1: 3.7ms
-Average Move Time - Player 2: 3.7ms
+Average Move Time - Player 2: 3.6ms
 
 ==================================================
 
 Non-Deterministic Games:
 ------------------------
 
-Configuration: P1(d=2)-P2(d=2)
------------------------------
+Configuration: P1(d=2,ab)-P2(d=2,ab)
+-----------------------------------
 Total Games: 200
-Player 1 Wins: 91 (45.5%)
-Player 2 Wins: 99 (49.5%)
-Draws: 10 (5.0%)
-Average Moves per Game: 7.3
-Average Move Time - Player 1: 0.2ms
+Player 1 Wins: 85 (42.5%)
+Player 2 Wins: 100 (50.0%)
+Draws: 15 (7.5%)
+Average Moves per Game: 7.4
+Average Move Time - Player 1: 0.1ms
 Average Move Time - Player 2: 0.1ms
 
 ==================================================
 
-Configuration: P1(d=2)-P2(d=4)
------------------------------
+Configuration: P1(d=2,ab)-P2(d=2,std)
+------------------------------------
 Total Games: 200
-Player 1 Wins: 88 (44.0%)
-Player 2 Wins: 104 (52.0%)
-Draws: 8 (4.0%)
+Player 1 Wins: 93 (46.5%)
+Player 2 Wins: 96 (48.0%)
+Draws: 11 (5.5%)
+Average Moves per Game: 7.1
+Average Move Time - Player 1: 0.1ms
+Average Move Time - Player 2: 0.2ms
+
+==================================================
+
+Configuration: P1(d=2,ab)-P2(d=4,ab)
+-----------------------------------
+Total Games: 200
+Player 1 Wins: 96 (48.0%)
+Player 2 Wins: 90 (45.0%)
+Draws: 14 (7.0%)
+Average Moves per Game: 7.2
+Average Move Time - Player 1: 0.4ms
+Average Move Time - Player 2: 0.7ms
+
+==================================================
+
+Configuration: P1(d=2,ab)-P2(d=4,std)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 87 (43.5%)
+Player 2 Wins: 100 (50.0%)
+Draws: 13 (6.5%)
+Average Moves per Game: 7.4
+Average Move Time - Player 1: 0.4ms
+Average Move Time - Player 2: 0.5ms
+
+==================================================
+
+Configuration: P1(d=2,ab)-P2(d=6,ab)
+-----------------------------------
+Total Games: 200
+Player 1 Wins: 85 (42.5%)
+Player 2 Wins: 98 (49.0%)
+Draws: 17 (8.5%)
+Average Moves per Game: 7.7
+Average Move Time - Player 1: 2.5ms
+Average Move Time - Player 2: 3.1ms
+
+==================================================
+
+Configuration: P1(d=2,ab)-P2(d=6,std)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 90 (45.0%)
+Player 2 Wins: 97 (48.5%)
+Draws: 13 (6.5%)
+Average Moves per Game: 7.6
+Average Move Time - Player 1: 2.7ms
+Average Move Time - Player 2: 3.3ms
+
+==================================================
+
+Configuration: P1(d=2,std)-P2(d=2,ab)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 95 (47.5%)
+Player 2 Wins: 95 (47.5%)
+Draws: 10 (5.0%)
+Average Moves per Game: 7.1
+Average Move Time - Player 1: 0.1ms
+Average Move Time - Player 2: 0.2ms
+
+==================================================
+
+Configuration: P1(d=2,std)-P2(d=2,std)
+-------------------------------------
+Total Games: 200
+Player 1 Wins: 92 (46.0%)
+Player 2 Wins: 95 (47.5%)
+Draws: 13 (6.5%)
+Average Moves per Game: 7.1
+Average Move Time - Player 1: 0.1ms
+Average Move Time - Player 2: 0.1ms
+
+==================================================
+
+Configuration: P1(d=2,std)-P2(d=4,ab)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 98 (49.0%)
+Player 2 Wins: 92 (46.0%)
+Draws: 10 (5.0%)
 Average Moves per Game: 7.5
-Average Move Time - Player 1: 0.5ms
+Average Move Time - Player 1: 0.7ms
 Average Move Time - Player 2: 0.6ms
 
 ==================================================
 
-Configuration: P1(d=2)-P2(d=6)
------------------------------
+Configuration: P1(d=2,std)-P2(d=4,std)
+-------------------------------------
 Total Games: 200
-Player 1 Wins: 97 (48.5%)
-Player 2 Wins: 93 (46.5%)
-Draws: 10 (5.0%)
-Average Moves per Game: 7.5
+Player 1 Wins: 85 (42.5%)
+Player 2 Wins: 101 (50.5%)
+Draws: 14 (7.0%)
+Average Moves per Game: 7.8
+Average Move Time - Player 1: 0.5ms
+Average Move Time - Player 2: 0.7ms
+
+==================================================
+
+Configuration: P1(d=2,std)-P2(d=6,ab)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 74 (37.0%)
+Player 2 Wins: 114 (57.0%)
+Draws: 12 (6.0%)
+Average Moves per Game: 7.4
 Average Move Time - Player 1: 2.6ms
 Average Move Time - Player 2: 3.3ms
 
 ==================================================
 
-Configuration: P1(d=4)-P2(d=2)
------------------------------
+Configuration: P1(d=2,std)-P2(d=6,std)
+-------------------------------------
 Total Games: 200
-Player 1 Wins: 97 (48.5%)
-Player 2 Wins: 91 (45.5%)
-Draws: 12 (6.0%)
-Average Moves per Game: 7.4
+Player 1 Wins: 88 (44.0%)
+Player 2 Wins: 102 (51.0%)
+Draws: 10 (5.0%)
+Average Moves per Game: 7.5
+Average Move Time - Player 1: 3.2ms
+Average Move Time - Player 2: 3.5ms
+
+==================================================
+
+Configuration: P1(d=4,ab)-P2(d=2,ab)
+-----------------------------------
+Total Games: 200
+Player 1 Wins: 90 (45.0%)
+Player 2 Wins: 99 (49.5%)
+Draws: 11 (5.5%)
+Average Moves per Game: 7.5
 Average Move Time - Player 1: 0.6ms
 Average Move Time - Player 2: 0.5ms
 
 ==================================================
 
-Configuration: P1(d=4)-P2(d=4)
------------------------------
+Configuration: P1(d=4,ab)-P2(d=2,std)
+------------------------------------
 Total Games: 200
-Player 1 Wins: 89 (44.5%)
-Player 2 Wins: 98 (49.0%)
-Draws: 13 (6.5%)
+Player 1 Wins: 104 (52.0%)
+Player 2 Wins: 81 (40.5%)
+Draws: 15 (7.5%)
+Average Moves per Game: 7.5
+Average Move Time - Player 1: 0.6ms
+Average Move Time - Player 2: 0.5ms
+
+==================================================
+
+Configuration: P1(d=4,ab)-P2(d=4,ab)
+-----------------------------------
+Total Games: 200
+Player 1 Wins: 95 (47.5%)
+Player 2 Wins: 90 (45.0%)
+Draws: 15 (7.5%)
 Average Moves per Game: 8.0
+Average Move Time - Player 1: 0.9ms
+Average Move Time - Player 2: 1.0ms
+
+==================================================
+
+Configuration: P1(d=4,ab)-P2(d=4,std)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 93 (46.5%)
+Player 2 Wins: 95 (47.5%)
+Draws: 12 (6.0%)
+Average Moves per Game: 7.5
+Average Move Time - Player 1: 1.2ms
+Average Move Time - Player 2: 1.1ms
+
+==================================================
+
+Configuration: P1(d=4,ab)-P2(d=6,ab)
+-----------------------------------
+Total Games: 200
+Player 1 Wins: 73 (36.5%)
+Player 2 Wins: 107 (53.5%)
+Draws: 20 (10.0%)
+Average Moves per Game: 8.2
+Average Move Time - Player 1: 3.3ms
+Average Move Time - Player 2: 3.6ms
+
+==================================================
+
+Configuration: P1(d=4,ab)-P2(d=6,std)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 86 (43.0%)
+Player 2 Wins: 87 (43.5%)
+Draws: 27 (13.5%)
+Average Moves per Game: 8.3
+Average Move Time - Player 1: 3.2ms
+Average Move Time - Player 2: 3.5ms
+
+==================================================
+
+Configuration: P1(d=4,std)-P2(d=2,ab)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 100 (50.0%)
+Player 2 Wins: 95 (47.5%)
+Draws: 5 (2.5%)
+Average Moves per Game: 6.9
+Average Move Time - Player 1: 0.7ms
+Average Move Time - Player 2: 0.4ms
+
+==================================================
+
+Configuration: P1(d=4,std)-P2(d=2,std)
+-------------------------------------
+Total Games: 200
+Player 1 Wins: 109 (54.5%)
+Player 2 Wins: 85 (42.5%)
+Draws: 6 (3.0%)
+Average Moves per Game: 7.4
+Average Move Time - Player 1: 0.6ms
+Average Move Time - Player 2: 0.6ms
+
+==================================================
+
+Configuration: P1(d=4,std)-P2(d=4,ab)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 91 (45.5%)
+Player 2 Wins: 95 (47.5%)
+Draws: 14 (7.0%)
+Average Moves per Game: 8.1
 Average Move Time - Player 1: 1.0ms
 Average Move Time - Player 2: 1.1ms
 
 ==================================================
 
-Configuration: P1(d=4)-P2(d=6)
------------------------------
-Total Games: 200
-Player 1 Wins: 91 (45.5%)
-Player 2 Wins: 91 (45.5%)
-Draws: 18 (9.0%)
-Average Moves per Game: 8.1
-Average Move Time - Player 1: 3.3ms
-Average Move Time - Player 2: 4.0ms
-
-==================================================
-
-Configuration: P1(d=6)-P2(d=2)
------------------------------
-Total Games: 200
-Player 1 Wins: 101 (50.5%)
-Player 2 Wins: 87 (43.5%)
-Draws: 12 (6.0%)
-Average Moves per Game: 7.6
-Average Move Time - Player 1: 3.7ms
-Average Move Time - Player 2: 3.3ms
-
-==================================================
-
-Configuration: P1(d=6)-P2(d=4)
------------------------------
+Configuration: P1(d=4,std)-P2(d=4,std)
+-------------------------------------
 Total Games: 200
 Player 1 Wins: 88 (44.0%)
-Player 2 Wins: 97 (48.5%)
-Draws: 15 (7.5%)
-Average Moves per Game: 7.9
-Average Move Time - Player 1: 3.8ms
-Average Move Time - Player 2: 3.3ms
+Player 2 Wins: 86 (43.0%)
+Draws: 26 (13.0%)
+Average Moves per Game: 8.2
+Average Move Time - Player 1: 1.1ms
+Average Move Time - Player 2: 1.0ms
 
 ==================================================
 
-Configuration: P1(d=6)-P2(d=6)
------------------------------
+Configuration: P1(d=4,std)-P2(d=6,ab)
+------------------------------------
 Total Games: 200
-Player 1 Wins: 81 (40.5%)
-Player 2 Wins: 91 (45.5%)
-Draws: 28 (14.0%)
+Player 1 Wins: 89 (44.5%)
+Player 2 Wins: 95 (47.5%)
+Draws: 16 (8.0%)
+Average Moves per Game: 8.2
+Average Move Time - Player 1: 3.2ms
+Average Move Time - Player 2: 3.8ms
+
+==================================================
+
+Configuration: P1(d=4,std)-P2(d=6,std)
+-------------------------------------
+Total Games: 200
+Player 1 Wins: 93 (46.5%)
+Player 2 Wins: 86 (43.0%)
+Draws: 21 (10.5%)
+Average Moves per Game: 8.1
+Average Move Time - Player 1: 3.2ms
+Average Move Time - Player 2: 3.8ms
+
+==================================================
+
+Configuration: P1(d=6,ab)-P2(d=2,ab)
+-----------------------------------
+Total Games: 200
+Player 1 Wins: 101 (50.5%)
+Player 2 Wins: 82 (41.0%)
+Draws: 17 (8.5%)
+Average Moves per Game: 7.7
+Average Move Time - Player 1: 3.2ms
+Average Move Time - Player 2: 2.7ms
+
+==================================================
+
+Configuration: P1(d=6,ab)-P2(d=2,std)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 103 (51.5%)
+Player 2 Wins: 89 (44.5%)
+Draws: 8 (4.0%)
+Average Moves per Game: 7.6
+Average Move Time - Player 1: 3.6ms
+Average Move Time - Player 2: 2.6ms
+
+==================================================
+
+Configuration: P1(d=6,ab)-P2(d=4,ab)
+-----------------------------------
+Total Games: 200
+Player 1 Wins: 95 (47.5%)
+Player 2 Wins: 89 (44.5%)
+Draws: 16 (8.0%)
+Average Moves per Game: 8.2
+Average Move Time - Player 1: 3.9ms
+Average Move Time - Player 2: 3.4ms
+
+==================================================
+
+Configuration: P1(d=6,ab)-P2(d=4,std)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 100 (50.0%)
+Player 2 Wins: 88 (44.0%)
+Draws: 12 (6.0%)
+Average Moves per Game: 8.0
+Average Move Time - Player 1: 3.9ms
+Average Move Time - Player 2: 3.4ms
+
+==================================================
+
+Configuration: P1(d=6,ab)-P2(d=6,ab)
+-----------------------------------
+Total Games: 200
+Player 1 Wins: 87 (43.5%)
+Player 2 Wins: 100 (50.0%)
+Draws: 13 (6.5%)
 Average Moves per Game: 8.3
-Average Move Time - Player 1: 6.0ms
+Average Move Time - Player 1: 6.1ms
+Average Move Time - Player 2: 6.0ms
+
+==================================================
+
+Configuration: P1(d=6,ab)-P2(d=6,std)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 89 (44.5%)
+Player 2 Wins: 98 (49.0%)
+Draws: 13 (6.5%)
+Average Moves per Game: 8.0
+Average Move Time - Player 1: 6.4ms
 Average Move Time - Player 2: 6.1ms
+
+==================================================
+
+Configuration: P1(d=6,std)-P2(d=2,ab)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 95 (47.5%)
+Player 2 Wins: 89 (44.5%)
+Draws: 16 (8.0%)
+Average Moves per Game: 7.8
+Average Move Time - Player 1: 3.6ms
+Average Move Time - Player 2: 2.7ms
+
+==================================================
+
+Configuration: P1(d=6,std)-P2(d=2,std)
+-------------------------------------
+Total Games: 200
+Player 1 Wins: 87 (43.5%)
+Player 2 Wins: 97 (48.5%)
+Draws: 16 (8.0%)
+Average Moves per Game: 7.9
+Average Move Time - Player 1: 3.3ms
+Average Move Time - Player 2: 2.8ms
+
+==================================================
+
+Configuration: P1(d=6,std)-P2(d=4,ab)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 96 (48.0%)
+Player 2 Wins: 87 (43.5%)
+Draws: 17 (8.5%)
+Average Moves per Game: 8.2
+Average Move Time - Player 1: 3.9ms
+Average Move Time - Player 2: 3.2ms
+
+==================================================
+
+Configuration: P1(d=6,std)-P2(d=4,std)
+-------------------------------------
+Total Games: 200
+Player 1 Wins: 95 (47.5%)
+Player 2 Wins: 87 (43.5%)
+Draws: 18 (9.0%)
+Average Moves per Game: 8.2
+Average Move Time - Player 1: 3.7ms
+Average Move Time - Player 2: 3.6ms
+
+==================================================
+
+Configuration: P1(d=6,std)-P2(d=6,ab)
+------------------------------------
+Total Games: 200
+Player 1 Wins: 99 (49.5%)
+Player 2 Wins: 83 (41.5%)
+Draws: 18 (9.0%)
+Average Moves per Game: 8.2
+Average Move Time - Player 1: 6.3ms
+Average Move Time - Player 2: 6.0ms
+
+==================================================
+
+Configuration: P1(d=6,std)-P2(d=6,std)
+-------------------------------------
+Total Games: 200
+Player 1 Wins: 98 (49.0%)
+Player 2 Wins: 85 (42.5%)
+Draws: 17 (8.5%)
+Average Moves per Game: 8.3
+Average Move Time - Player 1: 6.1ms
+Average Move Time - Player 2: 6.3ms
 
 ==================================================
 
