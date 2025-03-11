@@ -62,7 +62,7 @@ def run_game(game_class, player1_config, player2_config, starting_player=1):
     }
 
 def run_experiment():
-    depths = [2, 4, 6]  # Testing different depths for Negamax
+    depths = [2, 8]  # Testing different depths for Negamax
     pruning_options = [True, False]  # With and without alpha-beta pruning
     game_variants = [TicTacToe, TicTacDoh]
     results = {}
